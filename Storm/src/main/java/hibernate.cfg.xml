@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <!--数据库连接url配置-->
+
+    <property name="connection.url">jdbc:oracle:thin:@192.168.43.129:1521:orcl</property>
+    <property name="connection.driver_class">oracle.jdbc.OracleDriver</property>
+      <mapping class="entity.Manufacturer"/>
+    <mapping resource="entity/Manufacturer.hbm.xml"/>
+    <mapping resource="entity/Prescriptiontype.hbm.xml"/>
+    <mapping class="entity.Prescriptiontype"/>
+      <mapping resource="entity/Instocktype.hbm.xml"/>
+      <mapping class="entity.Instocktype"/>
+      <mapping resource="entity/Outstock.hbm.xml"/>
+      <mapping class="entity.Outstock"/>
+      <mapping resource="entity/OutstockMedicine.hbm.xml"/>
+      <mapping class="entity.OutstockMedicine"/>
+    <mapping resource="entity/Instock.hbm.xml"/>
+    <mapping class="entity.Instock"/>
+    <mapping resource="entity/Outstocktype.hbm.xml"/>
+    <mapping class="entity.Outstocktype"/>
+    <mapping resource="entity/InstockMedicine.hbm.xml"/>
+    <mapping class="entity.InstockMedicine"/>
+      <mapping class="entity.Employee"/>
+      <mapping resource="entity/Employee.hbm.xml"/>
+      <mapping class="entity.Medicine"/>
+      <mapping resource="entity/Medicine.hbm.xml"/>
+      <mapping resource="entity/Inventory.hbm.xml"/>
+      <mapping class="entity.Inventory"/>
+      <mapping resource="entity/InventoryMedicine.hbm.xml"/>
+      <mapping class="entity.InventoryMedicine"/>
+  </session-factory>
+</hibernate-configuration>
+
+
+

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.mapper.MedicineMapper">
+    <resultMap id="findMethodDetail" type="cn.entity.Medicine">
+        <id property="id" column="id"/>
+        <result property="typeId" column="typeId"/>
+        <result property="medicineNo" column="medicineNo"/>
+        <result property="medicineName" column="medicineName"/>
+        <result property="code" column="code"/>
+        <result property="medicineSize" column="medicineSize"/>
+        <result property="stock" column="stock"/>
+        <result property="price" column="price"/>
+        <result property="typeName" column="typeName"/>
+        <result property="prescriptionId" column="prescriptionId"/>
+        <collection property="method" select="findMethod" column="id"></collection>
+    </resultMap>
+    <select id="findMedicine" resultMap="findMethodDetail">
+        SELECT m.*,ct.typeName as typeName from Medicine m,medicineType ct
+        <where>
+            and m.typeId=ct.id
+            <if test="typeId!=null and typeId!=0">
+               and `typeId`=#{typeId}
+            </if>
+            <if test="code!=null and code!='null' and code!=''">
+                and (`code` like concat("%",#{code},"%") or `medicineName` like concat("%",#{code},"%"))
+            </if>
+        </where>
+    </select>
+    <select id="findMethod" resultType="cn.entity.Method">
+ SELECT m.* FROM `medicine_method` mm,`method` m where  m.`id`=mm.methodId AND mm.medicineId=#{id}
+    </select>
+    <select id="findMedicineByPid" resultMap="findMethodDetail">
+        SELECT m.*,ct.typeName as typeName from Medicine m,medicineType ct
+        <where>
+        and m.typeId=ct.id
+            <if test="pids!=null and pids!=0">
+                and m.prescriptionId=#{pids}
+            </if>
+        </where>
+
+    </select>
+    <select id="findMedicineType" resultType="cn.entity.MedicineType">
+        select * from  MedicineType
+        <where>
+            <if test="pid!=null">
+                and prescriptionTypeId=#{pid}
+            </if>
+        </where>
+    </select>
+    <update id="updateMedicine">
+        update medicine set stock = stock - #{stock}
+        where id = #{id}
+    </update>
+</mapper>

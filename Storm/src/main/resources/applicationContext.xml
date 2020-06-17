@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <context:property-placeholder location="classpath:db.properties" local-override="true"/>
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="url" value="${url}"></property>
+        <property name="driverClassName" value="${driverclass}"></property>
+        <property name="username" value="${username}"></property>
+        <property name="password" value="${password}"></property>
+
+        <!--<property name="initialSize" value="5"></property>
+        <property name="maxIdle" value="10"></property>
+        <property name="maxTotal" value="10"></property>-->
+    </bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" destroy-method="destroy">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="mappingLocations">
+            <list>
+                <value>classpath:entity/*.hbm.xml</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <tx:advice id="transactionInterceptor" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="get*" read-only="true"/>
+            <tx:method name="del*"/>
+            <tx:method name="update*"/>
+            <tx:method name="add*"/>
+            <tx:method name="find*"/>
+            <tx:method name="re*"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut id="allServices"
+                      expression="execution(* service.*.*(..))"/>
+        <aop:advisor advice-ref="transactionInterceptor" pointcut-ref="allServices"/>
+    </aop:config>
+    <bean id="outstockVo" scope="prototype" class="entity.vo.OutstockVo"/>
+    <bean id="medicineVo" scope="prototype" class="entity.vo.MedicineVo"/>
+    <bean id="inventoryVo" scope="prototype" class="entity.vo.InventoryVo"/>
+    <bean id="outstockMedicine" scope="prototype" class="entity.OutstockMedicine"/>
+    <bean id="inventoryMedicineVo" scope="prototype" class="entity.vo.InventoryMedicineVo"/>
+    <bean id="inventoryController" class="controller.InventoryController">
+        <property name="inventoryMedicineVo" ref="inventoryMedicineVo"/>
+        <property name="inventoryVo" ref="inventoryVo"/>
+        <property name="medicineVo" ref="medicineVo"/>
+    </bean>
+    <bean id="outstock" scope="prototype" class="entity.Outstock"></bean>
+    <bean id="outStockController" class="controller.OutStockController">
+        <property name="outstockVo" ref="outstockVo"></property>
+        <property name="medicineVo" ref="medicineVo"></property>
+        <property name="outstockMedicine" ref="outstockMedicine"></property>
+        <property name="outstock" ref="outstock"></property>
+    </bean>
+    <!--  bean  -->
+    <bean class="entity.vo.InMedicineVo" id="inMedicineVo" scope="prototype"></bean>
+
+<!--    <bean class="controller.MedicineAction" id="medicineAction" scope="prototype">
+    <property name="medicineService" ref="medicineService"></property>
+    <property name="medicineVO" ref="inMedicineVo"></property>
+</bean>-->
+
+    <!-- inStock -->
+    <bean class="dao.InStockDaoImpl" id="inStockDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean class="service.InStockServiceImpl" id="inStockService">
+        <property name="inStockDao" ref="inStockDao"/>
+    </bean>
+    <bean class="entity.vo.InStockVO" id="inStockVO" scope="prototype"></bean>
+    <bean class="controller.InStockAction" id="inStockAction" scope="prototype">
+        <property name="inStockService" ref="inStockService"/>
+        <property name="inStockVO" ref="inStockVO"/>
+    </bean>
+    <context:component-scan base-package="dao,service,controller"/>
+</beans>

@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="entity.Employee" table="EMPLOYEE" schema="SCOTT">
+        <id name="id">
+            <column name="ID" sql-type="number(11)" precision="11"/>
+        </id>
+        <property name="employeeno">
+            <column name="EMPLOYEENO" sql-type="varchar2(50)" length="50"/>
+        </property>
+        <property name="ename">
+            <column name="ENAME" sql-type="varchar2(50)" length="50"/>
+        </property>
+        <property name="age">
+            <column name="AGE" sql-type="number(11)" precision="11"/>
+        </property>
+        <property name="gender">
+            <column name="GENDER" sql-type="char(2)" length="2"/>
+        </property>
+        <property name="phone">
+            <column name="PHONE" sql-type="varchar2(50)" length="50"/>
+        </property>
+        <property name="email">
+            <column name="EMAIL" sql-type="varchar2(40)" length="40"/>
+        </property>
+        <property name="card">
+            <column name="CARD" sql-type="varchar2(50)" length="50"/>
+        </property>
+        <property name="address">
+            <column name="ADDRESS" sql-type="varchar2(50)" length="50"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="entity.Medicine" table="MEDICINE" schema="SCOTT">
+        <id name="id">
+            <column name="ID" sql-type="number(11)" precision="11"/>
+        </id>
+        <property name="typeid">
+            <column name="TYPEID" sql-type="number(11)" precision="11"/>
+        </property>
+        <property name="medicineno">
+            <column name="MEDICINENO" sql-type="varchar2(20)" length="20"/>
+        </property>
+        <property name="medicinename">
+            <column name="MEDICINENAME" sql-type="varchar2(50)" length="50"/>
+        </property>
+        <property name="code">
+            <column name="CODE" sql-type="varchar2(20)" length="20" not-null="true"/>
+        </property>
+        <property name="purchaseprice">
+            <column name="PURCHASEPRICE" sql-type="float(*)" precision="2147483646"/>
+        </property>
+        <property name="medicinesize">
+            <column name="MEDICINESIZE" sql-type="varchar2(20)" length="20"/>
+        </property>
+        <property name="stock">
+            <column name="STOCK" sql-type="number(11)" precision="11"/>
+        </property>
+        <property name="price">
+            <column name="PRICE" sql-type="float(*)" precision="2147483646"/>
+        </property>
+        <property name="prescriptionid">
+            <column name="PRESCRIPTIONID" sql-type="number(11)" precision="11"/>
+        </property>
+        <property name="status">
+            <column name="STATUS" sql-type="number(4)" precision="4"/>
+        </property>
+        <property name="createdate">
+            <column name="CREATEDATE" sql-type="date" not-null="true"/>
+        </property>
+        <property name="manufacturerid">
+            <column name="MANUFACTURERID" sql-type="number(11)"/>
+        </property>
+        <many-to-one name="prescriptiontype" class="entity.Prescriptiontype" column="PRESCRIPTIONID" update="false" insert="false" lazy="false"></many-to-one>
+        <many-to-one name="manufacturer" class="entity.Manufacturer" column="MANUFACTURERID" update="false" insert="false" lazy="false"></many-to-one>
+    </class>
+</hibernate-mapping>

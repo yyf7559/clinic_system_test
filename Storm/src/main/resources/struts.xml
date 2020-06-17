@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <package name="medicine" extends="struts-default">
+        <action name="outstock" class="controller.OutStockController" method="findOutStock">
+            <result name="outStock">OutStockIndex.jsp</result>
+        </action>
+        <action name="outstockdetail" class="controller.OutStockController" method="findOutStockDetail">
+            <result name="outStockDetail">OutStockDetail.jsp</result>
+        </action>
+        <action name="deloutstock" class="controller.OutStockController" method="delOutStock">
+            <result name="delTooutStock" type="redirect">medicine/outstock</result>
+        </action>
+        <action name="toaddoutstock" class="controller.OutStockController" method="toaddOutStock">
+            <result name="toaddOutStock">OutStockAdd.jsp</result>
+        </action>
+        <action name="toupdateoutstock" class="controller.OutStockController" method="toUpdateOutStock">
+            <result name="toUpdateOutStock">OutStockUpdate.jsp</result>
+        </action>
+        <action name="addagainoutstock" class="controller.OutStockController" method="addAgainOutStock">
+            <result name="addAgainOutStock" type="redirect">medicine/outstock</result>
+        </action>
+        <action name="findinventory" class="controller.InventoryController" method="findInventory">
+            <result name="findInventory">InventoryIndex.jsp</result>
+        </action>
+        <action name="toinventorydetailbyinfo" class="controller.InventoryController" method="toInventoryDetailByInfo">
+            <result name="toInventoryDetailByInfo">InventoryDetail.jsp</result>
+            <result name="toUpdateInventoryDetail">InventoryUpdateDetail.jsp</result>
+        </action>
+        <action name="delinventory" class="controller.InventoryController" method="delInventory">
+            <result name="delInventory" type="redirect">medicine/findinventory</result>
+        </action>
+    </package>
+    <package name="inStock" extends="struts-default">
+        <action name="inStock" class="inStockAction" method="getAllInStock">
+            <result name="success">/WEB-INF/views/inStockList.jsp</result>
+        </action>
+        <action name="showInStockInfoById" class="inStockAction" method="showInStockInfoById">
+            <result name="success">/WEB-INF/views/showInStockInfo.jsp</result>
+        </action>
+        <action name="deleteInStockById" class="controller.InStockAction" method="deleteInStockById">
+            <result name="success" type="redirect">inStock</result>
+        </action>
+        <action name="toAddInStock" class="controller.InStockAction" method="toAddInStock">
+            <result name="success">/WEB-INF/views/addInStockInfo.jsp</result>
+        </action>
+        <action name="toUpdateStatus" class="controller.InStockAction" method="toUpdateStatus">
+            <result name="success">/WEB-INF/views/modifiyStockInfo.jsp</result>
+        </action>
+    </package>
+    <package name="json" extends="json-default">
+        <action name="findmedicine" class="controller.OutStockController" method="findMedicine">
+            <result name="findMedicine" type="json">
+                <param name="root">medicines</param>
+            </result>
+        </action>
+        <action name="addoutstock" class="controller.OutStockController" method="addOutstock">
+            <result name="comeid" type="json">
+                <param name="root">outstockid</param>
+            </result>
+        </action>
+        <action name="addoutstockmedicine" class="controller.OutStockController" method="addOutstockMedicine">
+            <result name="addOutstockMedicine" type="json">
+                <param name="root">outstockid</param>
+            </result>
+        </action>
+        <action name="updateoutstock1" class="controller.OutStockController" method="updateOutStock1">
+            <result name="updateOutStock1" type="json">
+                <param name="root">outstockid</param>
+            </result>
+        </action>
+        <action name="updateoutstock2" class="controller.OutStockController" method="updateOutStock2">
+            <result name="updateOutStock2" type="json">
+                <param name="root">outstockid</param>
+            </result>
+        </action>
+        <action name="updateinventorydetail" class="controller.InventoryController" method="updateInventoryDetail">
+            <result name="updateInventoryDetail" type="json">
+                <param name="root">updateId</param>
+            </result>
+        </action>
+        <action name="inmedicine" class="controller.MedicineAction" method="list">
+            <result type="json" name="success">
+                <param name="root">medicineList</param>
+            </result>
+        </action>
+        <action name="doAddInStock" class="controller.InStockAction" method="doAddInStock">
+            <result type="json" name="success">
+                <param name="root">num</param>
+            </result>
+        </action>
+        <action name="addInStockMedicine" method="addInStockMedicine" class="controller.InStockAction">
+            <result type="json" name="success">
+                <param name="root">num</param>
+            </result>
+        </action>
+        <action name="reInStock" class="controller.InStockAction" method="reInStock">
+            <result type="json" name="success">
+                <param name="root">num</param>
+            </result>
+        </action>
+        <action name="delInStock" class="controller.InStockAction" method="delInStock">
+            <result type="json" name="success">
+                <param name="root">num</param>
+            </result>
+        </action>
+    </package>
+</struts>

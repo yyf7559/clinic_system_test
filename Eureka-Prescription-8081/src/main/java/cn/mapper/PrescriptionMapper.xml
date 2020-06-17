@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.mapper.PrescriptionMapper">
+    <insert id="addPrescription" keyProperty="id" useGeneratedKeys="true">
+        insert into prescription(`id`,`pname`,`employeeId`,`patientId`,`kindId`)
+         values(null,#{pname},#{employeeId},#{patientId},#{kindId})
+    </insert>
+    <insert id="addPreDetail">
+        insert into prescriptiondetail (`id`,`prescriptId`,`medicineId`,`useSize`,`methodId`,`frequency`,`days`,`count`
+)values(null,#{prescriptionDetail.prescriptId},#{prescriptionDetail.medicineId},#{prescriptionDetail.useSize},
+#{prescriptionDetail.methodId},#{prescriptionDetail.frequency},#{prescriptionDetail.days},#{prescriptionDetail.count})
+    </insert>
+    <select id="getAllPrescriptionMedicineXById" resultType="cn.entity.PrescriptionDetail">
+            select * from prescriptiondetail where prescriptId=#{id}
+    </select>
+</mapper>
