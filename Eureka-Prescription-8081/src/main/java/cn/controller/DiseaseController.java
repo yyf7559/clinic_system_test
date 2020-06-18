@@ -9,6 +9,7 @@ import cn.service.DiseaseService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +19,7 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("/call/disease")
 @Api(tags = "疾病测试接口")
+@RefreshScope
 public class DiseaseController {
     @Value("${server.test}")
     private String test;
@@ -29,8 +31,6 @@ public class DiseaseController {
     FeignDataApi feignDataApi;
     @Resource
     DiseaseService diseaseService;
-    @Resource
-    HttpClientHelper httpClientHelper;
     String diseaseUrl="http://localhost:8083/come/disease/";
     @GetMapping("/addDisease")
     @ApiOperation(value = "新增疾病处方表",notes = "")

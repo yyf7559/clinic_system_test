@@ -64,7 +64,7 @@ function checkout() {
             "        <td><input type=\"date\" name=\"medicineVO.startCreateTime\" class=\"form-control\" style=\"width: 150px;\"></td>\n" +
             "        <td class='purchasePrice1'>"+obj.find("td:eq(6)").html()+"</td>\n" +
             "        <td class='retailPrice1'>"+obj.find("td:eq(7)").html()+"</td>\n" +
-            "       <td><img src='img/remove.jpg' width='20px' height='20px' class='remove'></td>"
+            "       <td><img src='../../img/timg.jpg' width='20px' height='20px' class='remove'></td>"
         "    </tr>";
     });
     $("#x1").append(html);
@@ -112,7 +112,7 @@ function save() {
                     }
                 });
             });
-            location.href="http://localhost:8080/Clinic/inStock"
+            location.href="http://localhost:8080/inStock"
         }
     });
 }

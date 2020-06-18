@@ -27,8 +27,6 @@ public class PrescriptionController {
     FeignDataApi feignDataApi;
     @Resource
     PrescriptionService prescriptionService;
-    @Resource
-    HttpClientHelper httpClientHelper;
     String prescriptionUrl="http://localhost:8083/come/prescription/";
     @GetMapping("/addPrescription")
     @ApiOperation(value = "新增处方表数据",notes = "")
@@ -51,7 +49,7 @@ public class PrescriptionController {
     @GetMapping("/findPrescriptionType")
     @ApiOperation(value = "查询处方类型",notes = "")
     public Object findPrescriptionType(){
-        return httpClientHelper.getForResponse("http://localhost:8083/come/findPrescriptionType");
+        return feignDataApi.findPrescriptionType();
     }
 
     @GetMapping("/getAddPrice")

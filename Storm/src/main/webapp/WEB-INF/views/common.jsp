@@ -18,11 +18,9 @@
                         其他管理<b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">入库管理</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">出库管理</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">库存盘点</a></li>
+                        <li><a href="http://localhost:8080/inStock">入库管理</a></li>
+                        <li><a href="http://localhost:8080/medicine/outstock">出库管理</a></li>
+                        <li><a href="http://localhost:8080/medicine/findinventory">库存盘点</a></li>
                     </ul>
                 </li>
             </ul>

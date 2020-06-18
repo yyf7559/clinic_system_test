@@ -18,8 +18,6 @@ import javax.annotation.Resource;
 public class EmployeeController {
     @Resource
     FeignDataApi feignDataApi;
-    @Resource
-    HttpClientHelper httpClientHelper;
     String employeeUrl="http://localhost:8083/come/employee/";
     @GetMapping("/findEmployee")
     @ApiOperation(value = "根据科室查询员工信息",notes = "")

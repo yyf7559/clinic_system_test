@@ -18,8 +18,6 @@ import javax.annotation.Resource;
 public class PatientController {
     @Resource
     FeignDataApi feignDataApi;
-    @Resource
-    HttpClientHelper httpClientHelper;
     String patientUrl="http://localhost:8083/come/patient/";
     @GetMapping("/findPatient")
     @ApiOperation(value = "查询所有患者",notes = "")

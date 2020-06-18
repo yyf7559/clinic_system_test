@@ -21,8 +21,6 @@ import java.util.List;
 public class MedicineController {
     @Resource
     FeignMedicineApi feignMedicineApi;
-    @Resource
-    HttpClientHelper httpClientHelper;
     String medicine = "http://localhost:8084/come/medicine/";
 
     @GetMapping("/findMedicineByPid")
@@ -52,7 +50,7 @@ public class MedicineController {
         return feignMedicineApi.findMedicineType(pid);
     }
 
-    @GetMapping("/report")
+/*    @GetMapping("/report")
     public void report(HttpServletResponse response) {
         CreateExcel report = new CreateExcel();
         List<String> headList = Arrays.asList("序号","单号","药品名称","数量","采购成本");
@@ -62,7 +60,7 @@ public class MedicineController {
             dataList.add(Arrays.asList("" + i,"1000" + i,"药品" + i,"" +i, "2.55"));
         }
         report.createWorkBook(null, "a", headList, dataList, response, "报表测试.xls");
-    }
+    }*/
     @GetMapping("/updateMedicineStock")
     public Response updateMedicineStock(@RequestParam(value = "id",required = false) int id,
                                         @RequestParam(value = "stock",required = false) int stock){

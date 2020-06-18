@@ -21,8 +21,6 @@ public class AdviceController {
     FeignDataApi feignDataApi;
     @Resource
     AdviceService adviceService;
-    @Resource
-    HttpClientHelper httpClientHelper;
     String adviceUrl="http://localhost:8083/come/advice/";
     @GetMapping("/addAdvice")
     @ApiOperation(value = "新增医嘱处方表")

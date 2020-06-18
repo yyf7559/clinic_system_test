@@ -89,7 +89,7 @@
                     "        <td><input type=\"date\" class=\"form-control\" style=\"width: 150px;\"></td>\n" +
                     "        <td class='purchasePrice1'>"+obj.find("td:eq(6)").html()+"</td>\n" +
                     "        <td class='retailPrice1'>"+obj.find("td:eq(7)").html()+"</td>\n" +
-                    "        <td><img src='img/remove.jpg' width='20px' height='20px' class='remove'></td>"
+                    "        <td><img src='../../img/timg.jpg' width='20px' height='20px' class='remove'></td>"
                     "    </tr>";
             });
             $("#x1").append(html);
@@ -269,7 +269,7 @@
                 <td><input type="date" class="form-control" style="width: 150px;" value="<s:date name="#inStockMedicine.expirationDate" format="yyyy-MM-dd" />"></td>
                 <td class="purchasePrice1">${inStockMedicine.purchasePrice}</td>
                 <td class="retailPrice1">${inStockMedicine.price}</td>
-                <td><img src='img/remove.jpg' width='20px' height='20px' class="remove"></td>
+                <td><img src='../../img/timg.jpg' width='20px' height='20px' class="remove"></td>
             </tr>
         </s:iterator>
     </s:else>

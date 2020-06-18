@@ -83,19 +83,16 @@
             <groupId>clinc.eureka</groupId>
             <artifactId>Eureka-Medicine-Api</artifactId>
             <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>clinc.eureka</groupId>
             <artifactId>Eureka-Data-Api</artifactId>
             <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>clinc.eureka</groupId>
             <artifactId>Trade-API</artifactId>
             <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -121,6 +118,12 @@
                     <include>**/*.xml</include>
                 </includes>
             </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**</include>
+                </includes>
+            </resource>
         </resources>
         <plugins>
             <plugin>
@@ -132,7 +135,7 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.0.0</version>
                 <configuration>
-                    <imageName>prescription/${project.artifactId}</imageName>
+                    <imageName>prescriptionsss/${project.artifactId}</imageName>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>

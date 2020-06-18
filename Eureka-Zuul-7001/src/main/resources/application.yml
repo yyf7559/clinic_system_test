@@ -9,7 +9,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:9003/eureka/,http://localhost:9002/eureka/,http://localhost:9001/eureka/
+      defaultZone: http://192.168.43.129:9003/eureka/,http://192.168.43.129:9002/eureka/,http://192.168.43.129:9001/eureka/
   instance:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
@@ -24,17 +24,31 @@ zuul:
   sensitive-headers:
 
 ribbon:
-  connectTimeout: 500
-  readTimeout: 5000
+  connectTimeout: 100000
+  readTimeout: 100000
   maxAutoRetries: 1
   maxAutoRetriesNextServer: 3
   okToRetryOnAllOperations: true
   retryableStatusCodes: 500,404,502
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 100000
+        timeout:
+          enabled: true
+
 
 jwt:
   publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAx8lyvdPaxL8yzvO6fKgtAbE2V4P8LNgZ92SFZTukj5rFVkSICJeCucEaDQVISn7nwVGqoFrPVqOFOeZhY8vwQo0mU0Ct6PPQ1FSfQm6CcL6NdHI1Uvd8KXc4gkov/31DNT0pTbw7YXExL81A5AyE8hgpdVzMcmldOGaI8zz25Xr3aaX5mYGtIbyHRDdFr5X57nIBlAmOKZwOrGbVUCjVpzPKrOC5XalOxhlmPCXJKTl2PKseOHV+b60A+1uOxxVJjAw1VyjHs0oh3+mabwu6M36ZdAQvIBAiel+rkvz1Hv2W6m9Kof5P5lUWEHWtGlbK6C2xuUJqnqJ8OZwHXtAy2wIDAQAB
 logging:
   level:
     cn: debug
+
+
+
 
 

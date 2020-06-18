@@ -24,8 +24,6 @@ public class CheckController {
     FeignMedicineApi feignMedicineApi;
     @Resource
     CheckService checkService;
-    @Resource
-    HttpClientHelper httpClientHelper;
     String checkUrl="http://localhost:8084/come/check/";
     @GetMapping("/findCheck")
     @ApiOperation(value = "查询所有检查项目",notes = "")
