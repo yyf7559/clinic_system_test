@@ -9,7 +9,7 @@
         <version>2.1.8.RELEASE</version>
     </parent>
     <properties>
-        <docker.image.prefix>medicine</docker.image.prefix>
+        <docker.image.prefix>medicine-slave</docker.image.prefix>
     </properties>
     <groupId>clinc-eureka-medicine</groupId>
     <artifactId>Eureka-Medicine-8084</artifactId>

@@ -9,7 +9,7 @@
         <artifactId>spring-boot-starter-parent</artifactId>
     </parent>
     <properties>
-        <docker.image.prefix>data</docker.image.prefix>
+        <docker.image.prefix>data-slave</docker.image.prefix>
     </properties>
     <groupId>clinc.eureka</groupId>
     <artifactId>Eureka-Data-8083</artifactId>

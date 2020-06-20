@@ -1,5 +1,5 @@
 FROM java:8
-COPY target/*.jar medicines.jar
-RUN bash -c "touch /medicines.jar"
-EXPOSE 8084
-ENTRYPOINT ["java","-jar","medicines.jar"]
+COPY target/*.jar medicinesslave.jar
+RUN bash -c "touch /medicinesslave.jar"
+EXPOSE 8086
+ENTRYPOINT ["java","-jar","medicinesslave.jar"]

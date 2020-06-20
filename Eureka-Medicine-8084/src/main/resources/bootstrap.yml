@@ -2,4 +2,4 @@ spring:
   cloud:
     config:
       uri: http://192.168.43.129:6001
-      profile: dev
+      profile: prod
