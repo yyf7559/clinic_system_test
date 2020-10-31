@@ -18,15 +18,19 @@ import javax.annotation.Resource;
 public class PatientController {
     @Resource
     FeignDataApi feignDataApi;
-    String patientUrl="http://localhost:8083/come/patient/";
+    String patientUrl = "http://localhost:8083/come/patient/";
+
     @GetMapping("/findPatient")
-    @ApiOperation(value = "查询所有患者",notes = "")
-    public Response findCheckType(@RequestParam(value = "id",required = false) Integer id){
-    return feignDataApi.findPatient(id);
+    @ApiOperation(value = "查询所有患者", notes = "")
+    public Response findCheckType(@RequestParam(value = "id", required = false) Integer id) {
+        return feignDataApi.findPatient(id);
     }
-    @ApiOperation(value = "查询所有患者类型",notes = "")
+
+    @ApiOperation(value = "查询所有患者类型", notes = "")
     @GetMapping("/findType")
-    public Response findType(){
+    public Response findType() {
         return feignDataApi.findType();
     }
+
+
 }
