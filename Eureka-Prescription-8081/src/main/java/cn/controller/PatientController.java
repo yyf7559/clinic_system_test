@@ -33,5 +33,6 @@ public class PatientController {
     public void gitTest(){
         System.out.println("test1");
         System.out.println("test2");
+        System.out.println("test3");
     }
 }
