@@ -32,5 +32,6 @@ public class PatientController {
     @PostMapping("/gitTest")
     public void gitTest(){
         System.out.println("test1");
+        System.out.println("test2");
     }
 }

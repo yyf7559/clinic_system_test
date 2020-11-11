@@ -28,6 +28,7 @@ public class AuthController {
     @ApiOperation(value = "验证token, 获取用户信息", notes = "根据Jwt获取用户信息, code等于200为成功，其他值失败")
 //    @ApiImplicitParams({@ApiImplicitParam(name = "Authorization", value = "Authorization token", required = true, dataType = "string", paramType = "header")})
     public ResultJson<Map<String, Object>> user_info(HttpServletRequest request) throws Exception {
+        String token = request.getHeader("Authorization");
         Map<String, Object> jwtInfo = authService.getUserInfo(request.getHeader("Authorization"));
         return ResultJson.ok(jwtInfo);
     }
