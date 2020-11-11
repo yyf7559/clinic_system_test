@@ -34,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("admin1").password("$2a$10$T6Vl8WfdPZsK/4U25LRqM.wyv52TGTtmY7BxC/k4N01VyThUtjGoK").roles("ADMIN","USER")
+                .withUser("admin1").password("$2a$10$T6Vl8WfdPZsK/4U25LRqM.wyv52TGTtmY7BxC/k4N01VyThUtjGoK").roles("ADMIN", "USER")
                 .and()
                 .withUser("user02").password("$2a$10$T6Vl8WfdPZsK/4U25LRqM.wyv52TGTtmY7BxC/k4N01VyThUtjGoK").roles("USER");
     }
@@ -55,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //除登录注册以外都被保护
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/login","/sign","/validateToken","/error/**").permitAll()
+                .antMatchers("/login", "/sign", "/validateToken", "/error/**").permitAll()
                 // 除上面外的所有请求全部需要鉴权认证
                 .anyRequest().authenticated();
     }
@@ -73,9 +73,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web
-                .ignoring()
-                .antMatchers(
+        web.ignoring().antMatchers(
                         "swagger-ui.html",
                         "**/swagger-ui.html",
                         "/favicon.ico",
