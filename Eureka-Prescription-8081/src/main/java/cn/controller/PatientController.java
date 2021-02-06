@@ -1,7 +1,6 @@
 package cn.controller;
 
 import cn.config.FeignDataApi;
-import cn.http.HttpClientHelper;
 import cn.response.Response;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -15,7 +14,6 @@ import javax.annotation.Resource;
 public class PatientController {
     @Resource
     FeignDataApi feignDataApi;
-    String patientUrl = "http://localhost:8083/come/patient/";
 
     @GetMapping("/findPatient")
     @ApiOperation(value = "查询所有患者", notes = "")
@@ -27,12 +25,5 @@ public class PatientController {
     @GetMapping("/findType")
     public Response findType() {
         return feignDataApi.findType();
-    }
-
-    @PostMapping("/gitTest")
-    public void gitTest(){
-        System.out.println("test1");
-        System.out.println("test2");
-        System.out.println("test3");
     }
 }

@@ -1,7 +1,6 @@
 package cn.controller;
 
 import cn.config.FeignDataApi;
-import cn.http.HttpClientHelper;
 import cn.response.Response;
 import cn.response.ResponseEnum;
 import cn.entity.Prescription;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -27,7 +25,6 @@ public class PrescriptionController {
     FeignDataApi feignDataApi;
     @Resource
     PrescriptionService prescriptionService;
-    String prescriptionUrl="http://localhost:8083/come/prescription/";
     @GetMapping("/addPrescription")
     @ApiOperation(value = "新增处方表数据",notes = "")
     public Response addPrescription(Prescription prescription){

@@ -1,7 +1,6 @@
 package cn.controller;
 
 import cn.config.FeignDataApi;
-import cn.http.HttpClientHelper;
 import cn.response.Response;
 import cn.response.ResponseEnum;
 import cn.entity.PrescriptionAdvice;

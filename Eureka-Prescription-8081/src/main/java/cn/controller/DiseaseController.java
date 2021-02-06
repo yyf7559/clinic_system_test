@@ -1,7 +1,6 @@
 package cn.controller;
 
 import cn.config.FeignDataApi;
-import cn.http.HttpClientHelper;
 import cn.response.Response;
 import cn.response.ResponseEnum;
 import cn.entity.PrescriptionDisease;
@@ -31,11 +30,9 @@ public class DiseaseController {
     FeignDataApi feignDataApi;
     @Resource
     DiseaseService diseaseService;
-    String diseaseUrl="http://localhost:8083/come/disease/";
     @GetMapping("/addDisease")
     @ApiOperation(value = "新增疾病处方表",notes = "")
     public Response addDisease(PrescriptionDisease prescriptionDisease){
-        System.out.println(prescriptionDisease.getPrescriptionId()+","+prescriptionDisease.getDiseaseId());
         int n=diseaseService.addDisease(prescriptionDisease);
         if(n>0){
             return new Response(ResponseEnum.SUCCESS).setResponseBody(n);

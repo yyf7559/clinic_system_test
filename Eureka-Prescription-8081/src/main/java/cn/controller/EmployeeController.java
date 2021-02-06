@@ -1,7 +1,6 @@
 package cn.controller;
 
 import cn.config.FeignDataApi;
-import cn.http.HttpClientHelper;
 import cn.response.Response;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

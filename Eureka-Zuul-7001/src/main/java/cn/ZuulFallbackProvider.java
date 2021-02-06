@@ -23,7 +23,6 @@ public class ZuulFallbackProvider implements FallbackProvider {
 
     @Override
     public ClientHttpResponse fallbackResponse(String route, Throwable cause) {
-        System.out.println("111111111"+cause.getCause().getMessage());
         if(cause instanceof HystrixTimeoutException) {
             return response(HttpStatus.GATEWAY_TIMEOUT);
         } else {
